@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="home.css">
+        <script>
+            var getJSON = function(url, successHandler, errorHandler) {
+                var xhr = typeof XMLHttpRequest != 'undefined'
+                    ? new XMLHttpRequest()
+                    : new ActiveXObject('Microsoft.XMLHTTP');
+                xhr.open('get', url, true);
+                xhr.responseType = 'json';
+                xhr.onreadystatechange = function() {
+                    var status;
+                    var data;
+                    // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
+                    if (xhr.readyState == 4) { // `DONE`
+                        status = xhr.status;
+                        if (status == 200) {
+                            successHandler && successHandler(xhr.response);
+                        } else {
+                            errorHandler && errorHandler(status);
+                        }
+                    }
+                };
+                xhr.send();
+            };
+            getJSON('http://localhost:8080/home', function(data) {
+            
+           console.log('Your public IP address is: ' + JSON.stringify(data));
+  
+  
+
+  var result=document.getElementById('result');
+
+ for(var i=0;i<data.length;i++){
+ var video=data[i]
+ var parent=document.createElement('div');
+
+ parent.setAttribute('class','column');
+
+ var aElement=document.createElement('a');
+ aElement.setAttribute('href','video.link');
+ var img = document.createElement("img");
+img.src = video.image;
+aElement.appendChild(img);
+parent.appendChild(aElement);
+
+
+
+ var lableElement=document.createElement('lable');
+ lableElement.innerText=video.title;
+parent.appendChild(lableElement);
+
+
+var divElement=document.createElement('div');
+  divElement.innerText=video.company;
+  parent.appendChild(divElement);
+
+
+  var  divElement=document.createElement('div');
+  divElement.innerText=video.views;
+  parent.appendChild(divElement);
+  result.appendChild(parent);
+
+    } 
+       },function(status) {
+        alert('Something went wrong.');
+       });
+       </script>
+    </head>
+    <body>
+      <form id="myForm">
+      <div class="row" id="result"> </div>
+</form>
+</body> 
+  </html>
+
+  
+  
+            
+            
+            
+
+
+                                       
+
+
+
+            

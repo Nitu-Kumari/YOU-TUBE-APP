@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+  }
+
+
+  .column {
+    float: left;
+    width: 19.19%;
+    padding: 3px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  #leftImage{
+    left: 0;
+    width: 80px;
+    height: 50%;
+    position: fixed;
+  }
+  
+  #rightImage{
+    right: 0;
+    width: 80px;
+    height: 50%;
+    position: fixed;
+  }
+  
+  
+  
+  
+  
+
+
+
+  
+ 
+
+  
+
+  
